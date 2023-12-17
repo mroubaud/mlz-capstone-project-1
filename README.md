@@ -146,7 +146,7 @@ For deployng the code in a ECR machine of AWS we should do the following:
 
 
 ## Files Summary and Description
-
+After you train and test the model locally, you should have the following folder structure:
 * **datasets**: Folder with the datasets for training and testing the model
 * **gateway**: Folder with the file used for the gateway in the kubernetes cluster. it includes:
     * ```gateway.py```: For preprocess and postprocess the input image
@@ -161,6 +161,7 @@ For deployng the code in a ECR machine of AWS we should do the following:
 * **eks-config.yaml**: yaml file with eks code to create the cluster using EKS in order to deploy it in AWS
 * **Exploratory Data Analysis.ipynb**: Junyper notebook with EDA and Hyperparameter tuning
 * **image-model.dockerfile**: Docker file used to create image of the model
+* **READ E.md**: This document.
 * **save-tf_model.py**: Python script used to save the trained model in tf format
 * **test.py**: Python script used to test the model
 * **training.py**: Python script used to train the model
