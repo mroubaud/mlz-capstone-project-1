@@ -1,0 +1,64 @@
+###CREATE DOCKER IMAGES
+-Create model image
+docker build -t horses_vs_humans:v1 -f image-model.dockerfile .
+
+-Create gateway image
+docker build -t horses_vs_humans-gateway:v1 -f image-gateway.dockerfile .
+
+###KIND CLUSTER
+-Create Cluster
+kind create cluster
+
+-Cluster context
+kubectl cluster-info --context kind-kind
+
+-Check pods in cluster
+kubectl get pod
+
+-Check deployments in cluster
+kubectl get deployment
+
+###LOAD DOCKER IMAGES IN CLUSTER
+
+-Load image of the model
+kind load docker-image horses_vs_humans:v1
+
+-Apply model deployment to the cluster
+kubectl apply -f model-deployment.yaml
+
+-Check pods in cluster
+kubectl get pod
+
+-Check deployments in cluster
+kubectl get deployments
+
+-Delete depoyment and pod under deployment
+kubectl delete deployment [NAME]
+
+-Get description of POD creatiom
+kubectl describe pod [NAME]
+
+-Get logs of POD creation 
+kubectl logs [NAME]
+
+-Apply model-service deployment to the cluster
+kubectl apply -f model-service.yaml
+
+-Port mapping model-service
+kubectl port-forward service/tf-serving-model 8500:8500
+
+-Load image of the gateway
+kind load docker-image horses_vs_humans-gateway:v1
+
+-Apply gateway deployment to the cluster
+kubectl apply -f gateway-deployment.yaml
+
+-Apply gateway service deployment to the Cluster
+kubectl apply -f gateway-service.yaml
+
+-Port mapping for the model
+kubectl port-forward pod-name-taken-from-get-pod 9696:9696
+
+-Port mapping for the gateway
+kubectl port-forward service/gateway 8080:80
+
