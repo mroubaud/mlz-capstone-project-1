@@ -4,14 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-grpcio = "*"
-protobuf = "==3.20.3"
 flask = "*"
-numpy = "*"
 gunicorn = "*"
-tensorflow-protobuf = "==2.7.0"
 pillow = "*"
-tensorflow-serving-api = "*"
+grpcio = "*"
+tensorflow-protobuf = "==2.7.0"
+numpy = "*"
 
 [dev-packages]
 
